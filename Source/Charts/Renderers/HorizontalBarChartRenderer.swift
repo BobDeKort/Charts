@@ -252,7 +252,7 @@ open class HorizontalBarChartRenderer: BarChartRenderer
         {
             let barRect = buffer.rects[j]
             
-            let cornerRadius: CGFloat = barRect.width <= 5 ? 1.0 : 2.0
+            let cornerRadius: CGFloat = barRect.width / 2
             let bezierPath = UIBezierPath(roundedRect: barRect, cornerRadius: cornerRadius)
             
             let roundedPath = bezierPath.cgPath
