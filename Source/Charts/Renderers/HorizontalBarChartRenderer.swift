@@ -252,23 +252,16 @@ open class HorizontalBarChartRenderer: BarChartRenderer
         {
             let barRect = buffer.rects[j]
             
-            if (!viewPortHandler.isInBoundsTop(barRect.origin.y + barRect.size.height))
-            {
-                break
-            }
+            let cornerRadius: CGFloat = barRect.width <= 5 ? 1.0 : 2.0
+            let bezierPath = UIBezierPath(roundedRect: barRect, cornerRadius: cornerRadius)
             
-            if (!viewPortHandler.isInBoundsBottom(barRect.origin.y))
-            {
-                continue
-            }
+            let roundedPath = bezierPath.cgPath
             
-            if !isSingleColor
-            {
-                // Set the color for the currently drawn value. If the index is out of bounds, reuse colors.
-                context.setFillColor(dataSet.color(atIndex: j).cgColor)
-            }
+            context.setFillColor(dataSet.color(atIndex: j).cgColor)
+            context.addPath(roundedPath)
+            context.fillPath()
 
-            context.fill(barRect)
+//            context.fill(barRect)
 
             if drawBorder
             {
