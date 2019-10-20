@@ -15,7 +15,7 @@ import CoreGraphics
 @objc(BarLineScatterCandleBubbleChartRenderer)
 open class BarLineScatterCandleBubbleRenderer: DataRenderer
 {
-    internal var _xBounds = XBounds() // Reusable XBounds object
+    public var _xBounds = XBounds() // Reusable XBounds object
     
     public override init(animator: Animator, viewPortHandler: ViewPortHandler)
     {
